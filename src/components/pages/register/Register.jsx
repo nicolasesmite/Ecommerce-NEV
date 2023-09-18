@@ -13,12 +13,40 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { signUp } from "../../../../firebaseConfig";
 
 const Register = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+  const [userCredentials, setUserCredentials] = useState({
+    email:"",
+    password:"",
+    confirmPassword:""
+  })
+
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
+
+  const handleChange = (e) =>{
+
+    setUserCredentials({...userCredentials, [e.target.name]: e.target.value})
+
+  }
+
+  const handleSubmit = async (e) => {
+    
+    try {
+
+      e.preventDefault();
+      let res = await signUp(userCredentials)
+      console.log(res)
+
+
+      
+    } catch (error) {
+      
+    }
+  }
 
   return (
     <Box
@@ -32,7 +60,7 @@ const Register = () => {
         // backgroundColor: theme.palette.secondary.main,
       }}
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <Grid
           container
           rowSpacing={2}
@@ -40,7 +68,7 @@ const Register = () => {
           justifyContent={"center"}
         >
           <Grid item xs={10} md={12}>
-            <TextField name="email" label="Email" fullWidth />
+            <TextField name="email" label="Email" fullWidth onChange={handleChange} />
           </Grid>
           <Grid item xs={10} md={12}>
             <FormControl variant="outlined" fullWidth>
@@ -51,6 +79,7 @@ const Register = () => {
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
                 name="password"
+                onChange={handleChange}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -79,6 +108,7 @@ const Register = () => {
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
                 name="confirmPassword"
+                onChange={handleChange}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton

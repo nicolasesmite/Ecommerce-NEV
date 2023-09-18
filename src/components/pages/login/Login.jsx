@@ -16,12 +16,56 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { Link, useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
+import { loginGoogle, onSignIn } from "../../../../firebaseConfig";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
+
+  const [userCredentials, setUserCredentials] = useState({
+
+    email:"",
+    password:""
+
+  });
+
+  const handleChange = (e) =>{
+    setUserCredentials({...userCredentials, [e.target.name] : e.target.value })
+
+  }
+
+  const handleSubmit = async (e) => {
+
+    
+
+    try {
+
+      e.preventDefault();
+      const res = await onSignIn(userCredentials);
+      navigate("/");
+
+    } catch (error) {
+
+      console.log(error)
+      
+    }
+
+    
+
+  }
+
+  const googleSignIn = async () =>{
+
+    try {
+      let res = await loginGoogle();
+      navigate("/")
+      
+    } catch (error) {
+      
+    }
+  }
 
   return (
     <Box
@@ -35,7 +79,7 @@ const Login = () => {
         // backgroundColor: theme.palette.secondary.main,
       }}
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <Grid
           container
           rowSpacing={2}
@@ -43,7 +87,7 @@ const Login = () => {
           justifyContent={"center"}
         >
           <Grid item xs={10} md={12}>
-            <TextField name="email" label="Email" fullWidth />
+            <TextField name="email" label="Email" fullWidth onChange={handleChange} />
           </Grid>
           <Grid item xs={10} md={12}>
             <FormControl variant="outlined" fullWidth>
@@ -51,6 +95,7 @@ const Login = () => {
                 Contraseña
               </InputLabel>
               <OutlinedInput
+                onChange={handleChange}
                 name="password"
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
@@ -97,6 +142,7 @@ const Login = () => {
             <Grid item xs={10} md={5}>
               <Tooltip title="ingresa con google">
                 <Button
+                  onClick={googleSignIn}
                   variant="contained"
                   startIcon={<GoogleIcon />}
                   type="button"
