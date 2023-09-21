@@ -5,13 +5,14 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router-dom";
 
 const ItemList = ({ products }) => {
   return (
     <div>
       {products.map((product) => {
         return (
-          <Card sx={{ display: "flex" }} key={products.id}>
+          <Card sx={{ display: "flex" }} key={product.id}>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <CardContent sx={{ flex: "1 0 auto" }}>
                 <Typography component="div" variant="h5">
@@ -37,6 +38,8 @@ const ItemList = ({ products }) => {
               image={product.img}
               alt="Live from space album cover"
             />
+            <Link>Agregar al carrito w</Link>
+            <Link to={`itemDetail/${product.id}`}>Ver detalles</Link>
           </Card>
         );
       })}
