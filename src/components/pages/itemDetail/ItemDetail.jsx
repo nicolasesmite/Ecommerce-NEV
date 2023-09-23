@@ -10,9 +10,11 @@ import { CartContext } from "../../../context/CartContext";
 
 const ItemDetail = () => {
   const { id } = useParams();
-  const [counter, setCounter] = useState(1);
+
   const [productDetail, setProductDetail] = useState({});
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, getQuantityById } = useContext(CartContext);
+  let quantity = getQuantityById(id);
+  const [counter, setCounter] = useState(quantity || 1);
 
   useEffect(() => {
     let refCollection = collection(db, "products");
@@ -44,7 +46,15 @@ const ItemDetail = () => {
     addToCart(obj);
   };
 
-  const data = { productDetail, counter, addOne, subOne, onAdd, addToCart };
+  const data = {
+    productDetail,
+    counter,
+    addOne,
+    subOne,
+    onAdd,
+    addToCart,
+    quantity,
+  };
 
   return <ItemDetailContainer data={data} />;
 };
