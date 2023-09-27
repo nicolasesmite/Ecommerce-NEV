@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@mui/material";
 import { useContext } from "react";
 import { CartContext } from "../../../context/CartContext";
+import { Link } from "react-router-dom";
 
 export const Cart = ({ cart }) => {
   const { addOne, subOne, clearCart, deleteById, getTotalPrice } =
@@ -23,7 +24,6 @@ export const Cart = ({ cart }) => {
             <Button variant="contained" onClick={addOne}>
               +
             </Button>
-            <div>{product.quantity}</div>
             <Button variant="contained" onClick={subOne}>
               -
             </Button>
@@ -33,7 +33,11 @@ export const Cart = ({ cart }) => {
           </div>
         );
       })}
-      <h2>{cart && getTotalPrice()}</h2>
+      <h2>
+        {cart && getTotalPrice() && (
+          <Link to={"/checkOut"}>Finalizar compra</Link>
+        )}
+      </h2>
     </>
   );
 };
