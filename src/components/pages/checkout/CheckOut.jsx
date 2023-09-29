@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { useState } from "react";
+import axios from "axios";
 
 const Checkout = () => {
   const { cart } = useContext(CartContext);
