@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Checkout = () => {
   const { cart } = useContext(CartContext);
-  initMercadoPago("APP_USR-3a7b6e5a-1221-4b29-bd8c-755c5a6180d5", {
+  initMercadoPago(import.meta.env.VITE_PUBLIC_KEY_MP, {
     locale: "es-UY",
   });
 
