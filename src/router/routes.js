@@ -3,6 +3,7 @@ import Home from "../components/pages/home/Home";
 import ItemListContainer from "../components/pages/itemList/ItemListContainer";
 import CartContainer from "../components/pages/cart/CartContainer";
 import Checkout from "../components/pages/checkout/checkout";
+import Dashboard from "../components/pages/dashboard/Dashboard";
 
 export const routes = [
   {

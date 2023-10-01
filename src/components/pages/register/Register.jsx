@@ -13,40 +13,34 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signUp } from "../../../../firebaseConfig";
+import { signUp, db } from "../../../../firebaseConfig";
+import { setDoc, doc } from "firebase/firestore";
 
 const Register = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [userCredentials, setUserCredentials] = useState({
-    email:"",
-    password:"",
-    confirmPassword:""
-  })
-
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
-  const handleChange = (e) =>{
-
-    setUserCredentials({...userCredentials, [e.target.name]: e.target.value})
-
-  }
+  const handleChange = (e) => {
+    setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
-    
+    e.preventDefault();
     try {
-
-      e.preventDefault();
-      let res = await signUp(userCredentials)
-      console.log(res)
-
-
-      
-    } catch (error) {
-      
-    }
-  }
+      let res = await signUp(userCredentials);
+      if (res.user.uid) {
+        await setDoc(doc(db, "users", res.user.id), { rol: "user" });
+      }
+      navigate("/login");
+    } catch (error) {}
+  };
 
   return (
     <Box
@@ -68,7 +62,12 @@ const Register = () => {
           justifyContent={"center"}
         >
           <Grid item xs={10} md={12}>
-            <TextField name="email" label="Email" fullWidth onChange={handleChange} />
+            <TextField
+              name="email"
+              label="Email"
+              fullWidth
+              onChange={handleChange}
+            />
           </Grid>
           <Grid item xs={10} md={12}>
             <FormControl variant="outlined" fullWidth>

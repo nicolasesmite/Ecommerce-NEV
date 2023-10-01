@@ -11,19 +11,29 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useState } from "react";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { menuItems } from "../../../router/navigation";
-import { signOut } from "firebase/auth";
 import { logOut } from "../../../../firebaseConfig";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthContext";
 
 const drawerWidth = 200;
 
 function Navbar(props) {
+  const navigate = useNavigate();
+  const { logOutContext, user } = useContext(AuthContext);
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleLogout = () => {
+    logOut();
+    logOutContext();
+    navigate("/login");
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -49,8 +59,21 @@ function Navbar(props) {
           );
         })}
 
+        {user.rol === import.meta.env.VITE_ROL_ADMIN && (
+          <Link to="dashboard">
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemText
+                  primary="Dashboard"
+                  sx={{ color: "whitesmoke" }}
+                />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+        )}
+
         <ListItem disablePadding>
-          <ListItemButton onClick={logOut}>
+          <ListItemButton onClick={handleLogout}>
             <ListItemIcon>
               <LogoutIcon sx={{ color: "whitesmoke" }} />
             </ListItemIcon>
