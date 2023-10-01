@@ -36,7 +36,7 @@ const Register = () => {
     try {
       let res = await signUp(userCredentials);
       if (res.user.uid) {
-        await setDoc(doc(db, "users", res.user.id), { rol: "user" });
+        await setDoc(doc(db, "users", res.user.uid), { rol: "user" });
       }
       navigate("/login");
     } catch (error) {}
