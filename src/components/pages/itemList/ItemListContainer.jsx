@@ -5,7 +5,6 @@ import ItemList from "./ItemList";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-  const [counter, setCounter] = useState();
 
   useEffect(() => {
     let refCollection = collection(db, "products");
