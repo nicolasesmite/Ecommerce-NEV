@@ -6,7 +6,6 @@ const UserOrdersContainer = ({ myOrder }) => {
       <h2>Estoy en mis ordenes</h2>
 
       {myOrder.map((order) => {
-        console.log(order.date);
         return (
           <div key={order.id}>
             <h2>${order.total}</h2>
