@@ -5,7 +5,7 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import { useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../../context/AuthContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { db } from "../../../../firebaseConfig";
 import {
@@ -17,7 +17,7 @@ import {
 } from "firebase/firestore";
 
 const Checkout = () => {
-  const { cart, getTotalPrice } = useContext(CartContext);
+  const { cart, getTotalPrice, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
 
   initMercadoPago(import.meta.env.VITE_PUBLIC_KEY_MP, {
@@ -46,13 +46,14 @@ const Checkout = () => {
         }
       );
 
-      order.items.forEach((element) => {
+      order.forEach((element) => {
         updateDoc(doc(db, "products", element.id), {
           stock: element.stock - element.quantity,
         });
       });
 
       localStorage.removeItem("order");
+      clearCart();
     }
   }, [paramValue]);
 
@@ -72,7 +73,7 @@ const Checkout = () => {
         "http://localhost:8080/create_preference",
         {
           items: newArray,
-          shipment_cost: 100,
+          shipment_cost: 1,
         }
       ); //post a api de mercadopago
 
@@ -88,11 +89,13 @@ const Checkout = () => {
       cp: userData.cp,
       tel: userData.tel,
       items: cart,
-      total,
+      totalPrice: total,
       email: user.email,
     };
-    localStorage.setItem("oder", JSON.stringify(order));
+    localStorage.setItem("order", JSON.stringify(order));
     const id = await createPreference();
+
+    console.log(order.totalPrice);
 
     if (id) {
       setPreferenceId(id);
@@ -125,6 +128,7 @@ const Checkout = () => {
         <>
           <h2>El pago se realizo con exito</h2>
           <h2>Su numero de compra es {orderId}</h2>
+          <Link to="/shop">Seguir comprando</Link>
         </>
       )}
       {preferenceId && (
