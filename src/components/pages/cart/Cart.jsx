@@ -35,7 +35,7 @@ export const Cart = ({ cart }) => {
       })}
       <h2>
         {cart && getTotalPrice() && (
-          <Link to="/checkout">Finalizar compra</Link>
+          <Link to="/checkOut">Finalizar compra</Link>
         )}
       </h2>
     </>

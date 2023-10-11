@@ -16,7 +16,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
-const Checkout = () => {
+const CheckOut = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
   const { user } = useContext(AuthContext);
 
@@ -138,4 +138,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default CheckOut;
