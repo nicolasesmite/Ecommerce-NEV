@@ -29,7 +29,7 @@ export const routes = [
   {
     id: "checkout",
     path: "/checkout",
-    Element: CheckOut,
+    Element: Checkout,
   },
   {
     id: "userOrders",
