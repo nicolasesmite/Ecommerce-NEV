@@ -107,9 +107,9 @@ const CheckOut = () => {
   };
 
   return (
-    <div>
+    <div className="container-checkout">
       {!orderId ? (
-        <>
+        <div className="container-checkout-data">
           <input
             name="codigo-Postal"
             aria-label="codigo-postal"
@@ -122,14 +122,16 @@ const CheckOut = () => {
             onChange={handleChange}
             placeholder="Ingrese su telefono"
           />
-          <button onClick={handleBuy}>Seleccionar metodo de pago</button>
-        </>
+          <button className="button-checkout-wallet" onClick={handleBuy}>
+            Seleccionar metodo de pago
+          </button>
+        </div>
       ) : (
-        <>
+        <div className="container-checkout-orderDetail">
           <h2>El pago se realizo con exito</h2>
           <h2>Su numero de compra es {orderId}</h2>
           <Link to="/shop">Seguir comprando</Link>
-        </>
+        </div>
       )}
       {preferenceId && (
         <Wallet initialization={{ preferenceId, redirectMode: "self" }} />

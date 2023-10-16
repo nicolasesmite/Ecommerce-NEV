@@ -12,35 +12,18 @@ const ItemList = ({ products }) => {
     <div>
       {products.map((product) => {
         return (
-          <Card sx={{ display: "flex" }} key={product.id}>
-            <Box sx={{ display: "flex", flexDirection: "column" }}>
-              <CardContent sx={{ flex: "1 0 auto" }}>
-                <Typography component="div" variant="h5">
-                  {product.name}
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  color="text.secondary"
-                  component="div"
-                >
-                  ${product.unit_price}
-                </Typography>
-              </CardContent>
-              <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
-                <IconButton aria-label="previous"></IconButton>
-                <IconButton aria-label="play/pause"></IconButton>
-                <IconButton aria-label="next"></IconButton>
-              </Box>
-            </Box>
-            <CardMedia
-              component="img"
-              sx={{ width: 151 }}
-              image={product.img}
-              alt="Live from space album cover"
-            />
-            <Link>Agregar al carrito w</Link>
+          <div className="conatiner-itemList" key={product.id}>
+            <h2>{product.name}</h2>
+            <img src={`${product.img}`} />
+            <h2>${product.unit_price}</h2>
+            {product.stock > 0 ? (
+              <h4>{product.stock} unidades disponibles</h4>
+            ) : (
+              <h4>No hay unidades en stock</h4>
+            )}
+
             <Link to={`itemDetail/${product.id}`}>Ver detalles</Link>
-          </Card>
+          </div>
         );
       })}
     </div>
