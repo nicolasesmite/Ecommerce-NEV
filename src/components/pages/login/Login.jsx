@@ -65,7 +65,7 @@ const Login = () => {
               onChange={handleChange}
             ></input>
             <input
-              name="contraseña"
+              name="password"
               type="password"
               aria-label="password"
               onChange={handleChange}
