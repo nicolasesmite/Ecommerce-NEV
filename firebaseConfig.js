@@ -6,6 +6,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
@@ -51,4 +52,9 @@ export const signUp = async ({ email, password }) => {
   } catch (error) {
     console.log(res);
   }
+};
+
+export const forgotPassword = async (email) => {
+  let res = await sendPasswordResetEmail(auth, email);
+  return res;
 };

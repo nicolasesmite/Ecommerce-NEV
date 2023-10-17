@@ -1,20 +1,4 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  Grid,
-  IconButton,
-  InputAdornment,
-  InputLabel,
-  OutlinedInput,
-  TextField,
-  Tooltip,
-  Typography,
-} from "@mui/material";
-import GoogleIcon from "@mui/icons-material/Google";
-
 import { Link, useNavigate } from "react-router-dom";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
 import { loginGoogle, onSignIn } from "../../../../firebaseConfig";
 import { db } from "../../../../firebaseConfig";
@@ -24,10 +8,8 @@ import { AuthContext } from "../../../context/AuthContext";
 
 const Login = () => {
   const { handleLogIn } = useContext(AuthContext);
-  const [showPassword, setShowPassword] = useState(false);
-  const navigate = useNavigate();
 
-  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const navigate = useNavigate();
 
   const [userCredentials, setUserCredentials] = useState({
     email: "",
@@ -71,131 +53,47 @@ const Login = () => {
   };
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        // backgroundColor: theme.palette.secondary.main,
-      }}
-    >
+    <div className="container-login">
       <form onSubmit={handleSubmit}>
-        <Grid
-          container
-          rowSpacing={2}
-          // alignItems="center"
-          justifyContent={"center"}
-        >
-          <Grid item xs={10} md={12}>
-            <TextField
+        <div className="container-login-form">
+          <div className="container-inputs-login">
+            <input
               name="email"
-              label="Email"
-              fullWidth
+              type="email"
+              placeholder="Ingrese su email"
+              aria-label="email"
               onChange={handleChange}
-            />
-          </Grid>
-          <Grid item xs={10} md={12}>
-            <FormControl variant="outlined" fullWidth>
-              <InputLabel htmlFor="outlined-adornment-password">
-                Contraseña
-              </InputLabel>
-              <OutlinedInput
-                onChange={handleChange}
-                name="password"
-                id="outlined-adornment-password"
-                type={showPassword ? "text" : "password"}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      edge="end"
-                    >
-                      {showPassword ? (
-                        <VisibilityOff color="primary" />
-                      ) : (
-                        <Visibility color="primary" />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Contraseña"
-              />
-            </FormControl>
-          </Grid>
-          <Link
-            to="/forgot-password"
-            style={{ color: "steelblue", marginTop: "10px" }}
+            ></input>
+            <input
+              name="contraseña"
+              type="password"
+              aria-label="password"
+              onChange={handleChange}
+              placeholder="Ingrese su contraseña"
+            ></input>
+          </div>
+
+          <Link to="/forgot-password">¿Olvidaste tu contraseña?</Link>
+
+          <div className="container-buttons-login">
+            <button type="submit">Ingresar</button>
+            <button onClick={googleSignIn} type="button">
+              Ingresa con google
+            </button>
+          </div>
+
+          <h3 className="h3-title-register">¿Aun no tienes cuenta?</h3>
+
+          <button
+            className="button-register-login"
+            onClick={() => navigate("/register")}
+            type="button"
           >
-            ¿Olvidaste tu contraseña?
-          </Link>
-          <Grid container justifyContent="center" spacing={3} mt={2}>
-            <Grid item xs={10} md={5}>
-              <Button
-                variant="contained"
-                fullWidth
-                type="submit"
-                sx={{
-                  color: "white",
-                  textTransform: "none",
-                  textShadow: "2px 2px 2px grey",
-                }}
-              >
-                Ingresar
-              </Button>
-            </Grid>
-            <Grid item xs={10} md={5}>
-              <Tooltip title="ingresa con google">
-                <Button
-                  onClick={googleSignIn}
-                  variant="contained"
-                  startIcon={<GoogleIcon />}
-                  type="button"
-                  fullWidth
-                  sx={{
-                    color: "white",
-                    textTransform: "none",
-                    textShadow: "2px 2px 2px grey",
-                  }}
-                >
-                  Ingresa con google
-                </Button>
-              </Tooltip>
-            </Grid>
-            <Grid item xs={10} md={8}>
-              <Typography
-                color={"secondary.primary"}
-                variant={"h6"}
-                mt={1}
-                align="center"
-              >
-                ¿Aun no tienes cuenta?
-              </Typography>
-            </Grid>
-            <Grid item xs={10} md={5}>
-              <Tooltip title="ingresa con google">
-                <Button
-                  variant="contained"
-                  fullWidth
-                  onClick={() => navigate("/register")}
-                  type="button"
-                  sx={{
-                    color: "white",
-                    textTransform: "none",
-                    textShadow: "2px 2px 2px grey",
-                  }}
-                >
-                  Registrate
-                </Button>
-              </Tooltip>
-            </Grid>
-          </Grid>
-        </Grid>
+            Registrate
+          </button>
+        </div>
       </form>
-    </Box>
+    </div>
   );
 };
 

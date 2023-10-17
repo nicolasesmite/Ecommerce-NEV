@@ -25,8 +25,6 @@ const Register = () => {
     confirmPassword: "",
   });
 
-  const handleClickShowPassword = () => setShowPassword(!showPassword);
-
   const handleChange = (e) => {
     setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value });
   };
@@ -43,61 +41,47 @@ const Register = () => {
   };
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        // backgroundColor: theme.palette.secondary.main,
-      }}
-    >
+    <div>
       <form onSubmit={handleSubmit}>
-        <Grid
-          container
-          rowSpacing={2}
-          // alignItems="center"
-          justifyContent={"center"}
-        >
-          <Grid item xs={10} md={12}>
-            <TextField
+        <div>
+          <div item xs={10} md={12}>
+            <input
               name="email"
-              label="Email"
-              fullWidth
+              aria-label="Email"
+              type="email"
               onChange={handleChange}
+            ></input>
+          </div>
+          <div>
+            <input
+              name="password"
+              aria-label="contraseña"
+              type="password"
+              onChange={handleChange}
+            ></input>
+
+            <OutlinedInput
+              id="outlined-adornment-password"
+              type={showPassword ? "text" : "password"}
+              name="password"
+              onChange={handleChange}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    edge="end"
+                  >
+                    {showPassword ? (
+                      <VisibilityOff color="primary" />
+                    ) : (
+                      <Visibility color="primary" />
+                    )}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label="Contraseña"
             />
-          </Grid>
-          <Grid item xs={10} md={12}>
-            <FormControl variant="outlined" fullWidth>
-              <InputLabel htmlFor="outlined-adornment-password">
-                Contraseña
-              </InputLabel>
-              <OutlinedInput
-                id="outlined-adornment-password"
-                type={showPassword ? "text" : "password"}
-                name="password"
-                onChange={handleChange}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      edge="end"
-                    >
-                      {showPassword ? (
-                        <VisibilityOff color="primary" />
-                      ) : (
-                        <Visibility color="primary" />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Contraseña"
-              />
-            </FormControl>
-          </Grid>
+          </div>
           <Grid item xs={10} md={12}>
             <FormControl variant="outlined" fullWidth>
               <InputLabel htmlFor="outlined-adornment-password">
@@ -112,7 +96,6 @@ const Register = () => {
                   <InputAdornment position="end">
                     <IconButton
                       aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
                       edge="end"
                     >
                       {showPassword ? (
@@ -127,8 +110,8 @@ const Register = () => {
               />
             </FormControl>
           </Grid>
-          <Grid container justifyContent="center" spacing={3} mt={2}>
-            <Grid item xs={10} md={7}>
+          <div container justifyContent="center" spacing={3} mt={2}>
+            <div item xs={10} md={7}>
               <Button
                 variant="contained"
                 fullWidth
@@ -141,8 +124,8 @@ const Register = () => {
               >
                 Registrarme
               </Button>
-            </Grid>
-            <Grid item xs={10} md={7}>
+            </div>
+            <div item xs={10} md={7}>
               <Button
                 variant="contained"
                 fullWidth
@@ -151,11 +134,11 @@ const Register = () => {
               >
                 Regresar
               </Button>
-            </Grid>
-          </Grid>
-        </Grid>
+            </div>
+          </div>
+        </div>
       </form>
-    </Box>
+    </div>
   );
 };
 
