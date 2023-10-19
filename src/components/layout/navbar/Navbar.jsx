@@ -40,7 +40,7 @@ function Navbar(props) {
   };
 
   const drawer = (
-    <div>
+    <>
       <Toolbar />
 
       <List>
@@ -84,7 +84,7 @@ function Navbar(props) {
           </ListItemButton>
         </ListItem>
       </List>
-    </div>
+    </>
   );
 
   const container =
@@ -144,7 +144,7 @@ function Navbar(props) {
           py: 4,
           width: "100%",
           minHeight: "100vh",
-          px: 2,
+          padding: "0",
         }}
       >
         <Toolbar />
