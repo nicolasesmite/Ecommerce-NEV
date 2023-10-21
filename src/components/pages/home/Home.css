@@ -1,26 +1,67 @@
 * {
+  color: white;
+}
+
+h1 {
+  font: bold;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 15px;
+  font-size: 65px;
+}
+
+.container-img-home {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .container-home {
   height: 100%;
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  background-image: "https://res.cloudinary.com/dxb4thu1x/image/upload/v1697725153/2844_arspdm.jpg";
+  background-color: rgb(17, 2, 2);
 }
-@media (max-width: 2000px) {
-  .container-img-home {
-    width: 100%;
-    display: flex;
-    background-color: rgb(90, 84, 84);
-    justify-content: center;
-  }
 
+button {
+  border-radius: 10px;
+  background-color: black;
+  border-color: white;
+  border: solid;
+  cursor: pointer;
+  width: 300px;
+  height: 70px;
+  margin-bottom: 100px;
+  font-size: 30px;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
+@media (max-width: 2000px) {
   img {
-    width: 50%;
+    width: 20vw;
+    height: 55vh;
   }
 }
 
 @media (max-width: 1024px) {
+  img {
+    width: 35vw;
+    height: 50vh;
+  }
+}
+
+@media (max-width: 576px) {
+  img {
+    width: 75vw;
+    height: 50vh;
+  }
+
+  .h1-home {
+    visibility: hidden;
+  }
 }
