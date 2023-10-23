@@ -48,7 +48,7 @@ function Navbar(props) {
           return (
             <Link key={id} to={path}>
               <ListItem disablePadding>
-                <ListItemButton>
+                <ListItemButton sx={{}}>
                   <ListItemIcon>
                     <Icon sx={{ color: "whitesmoke" }} />
                   </ListItemIcon>
@@ -75,12 +75,9 @@ function Navbar(props) {
         <ListItem disablePadding>
           <ListItemButton onClick={handleLogout}>
             <ListItemIcon>
-              <LogoutIcon sx={{ color: "whitesmoke" }} />
+              <LogoutIcon sx={{ color: "black" }} />
             </ListItemIcon>
-            <ListItemText
-              primary={"Cerrar sesion"}
-              sx={{ color: "whitesmoke" }}
-            />
+            <ListItemText primary={"Cerrar sesion"} sx={{ color: "black" }} />
           </ListItemButton>
         </ListItem>
       </List>
@@ -96,22 +93,35 @@ function Navbar(props) {
       <AppBar
         position="fixed"
         sx={{
+          backgroundColor: "#558b2f",
           width: "100%",
         }}
       >
         <Toolbar
-          sx={{ gap: "20px", display: "flex", justifyContent: "space-between" }}
+          sx={{
+            gap: "150px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
         >
-          <Link to="/" style={{ color: "whitesmoke" }}>
-            Bazar-deco
+          <Link
+            to="/"
+            style={{
+              color: "white",
+              fontFamily: "revert",
+              fontSize: "30px",
+            }}
+          >
+            <h3>J!KM</h3>
           </Link>
+
           <IconButton
-            color="secondary.primary"
+            color="black"
             aria-label="open drawer"
-            edge="start"
+            edge="end"
             onClick={handleDrawerToggle}
           >
-            <MenuIcon color="secondary.primary" />
+            <MenuIcon color="black" />
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -130,7 +140,7 @@ function Navbar(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor: "#1976d2",
+              backgroundColor: "#558b2f",
             },
           }}
         >

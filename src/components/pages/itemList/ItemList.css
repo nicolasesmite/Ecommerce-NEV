@@ -1,0 +1,33 @@
+.container-itemList {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.container-item-itemList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 25vw;
+  min-height: 20vh;
+  margin: 25px 10px;
+  border-style: solid;
+  border-color: white;
+}
+
+.container-item-itemList > img {
+  width: 100%;
+  min-height: 30%;
+}
+
+.container-details {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
