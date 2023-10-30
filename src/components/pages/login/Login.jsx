@@ -5,6 +5,7 @@ import { db } from "../../../../firebaseConfig";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
+import "./Login.css";
 
 const Login = () => {
   const { handleLogIn } = useContext(AuthContext);
@@ -54,6 +55,10 @@ const Login = () => {
     <div className="container-login">
       <form onSubmit={handleSubmit}>
         <div className="container-login-form">
+          <img
+            className="gif-home"
+            src="https://res.cloudinary.com/dxb4thu1x/image/upload/v1697911872/image_tjacsx.png"
+          />
           <div className="container-inputs-login">
             <input
               name="email"
@@ -69,7 +74,7 @@ const Login = () => {
               onChange={handleChange}
               placeholder="Ingrese su contraseña"
             ></input>{" "}
-            <div style={{ color: "black" }}>
+            <div style={{ color: "black" }} hidden>
               Datos no validos, favor chequee su email y contraseña
             </div>
           </div>
