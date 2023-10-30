@@ -84,3 +84,12 @@
     margin-top: 50px;
   }
 }
+
+@media (max-width: 400px) {
+  .item-title {
+    position: absolute;
+    margin-left: 120px;
+    margin-bottom: 110px;
+    font-size: 20px;
+  }
+}

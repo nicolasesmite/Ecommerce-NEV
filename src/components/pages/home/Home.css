@@ -24,7 +24,7 @@ h1 {
   background-color: rgb(17, 2, 2);
 }
 
-button {
+.button-home {
   border-radius: 10px;
   background-color: black;
   border-color: white;
@@ -36,7 +36,7 @@ button {
   font-size: 30px;
 }
 
-button:hover {
+.button-home:hover {
   background-color: white;
   color: black;
 }
