@@ -40,9 +40,7 @@ const Login = () => {
 
         navigate("/");
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const googleSignIn = async () => {
@@ -70,7 +68,10 @@ const Login = () => {
               aria-label="password"
               onChange={handleChange}
               placeholder="Ingrese su contraseña"
-            ></input>
+            ></input>{" "}
+            <div style={{ color: "black" }}>
+              Datos no validos, favor chequee su email y contraseña
+            </div>
           </div>
 
           <Link to="/forgot-password">¿Olvidaste tu contraseña?</Link>
