@@ -126,4 +126,12 @@ button:hover {
 }
 
 @media (max-width: 450px) {
+  .h3-title-register {
+    font-size: 15px;
+  }
+
+  a,
+  button {
+    pointer-events: none;
+  }
 }
