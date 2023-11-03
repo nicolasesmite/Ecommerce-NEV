@@ -56,7 +56,7 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <div className="container-login-form">
           <img
-            className="gif-home"
+            className="login-img"
             src="https://res.cloudinary.com/dxb4thu1x/image/upload/v1697911872/image_tjacsx.png"
           />
           <div className="container-inputs-login">
@@ -73,13 +73,13 @@ const Login = () => {
               aria-label="password"
               onChange={handleChange}
               placeholder="Ingrese su contraseña"
-            ></input>{" "}
+            ></input>
             <div style={{ color: "black" }} hidden>
               Datos no validos, favor chequee su email y contraseña
             </div>
           </div>
 
-          <Link to="/forgot-password">¿Olvidaste tu contraseña?</Link>
+          <Link to="/forgot-password">Olvide mi contraseña</Link>
 
           <div className="container-buttons-login">
             <button type="submit">Ingresar</button>
