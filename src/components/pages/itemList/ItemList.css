@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   background-color: black;
+  color: white;
 }
 
 .container-item-itemList {
@@ -38,9 +39,6 @@
   background-color: white;
   color: black;
   padding: 3px;
-}
-
-@media (max-width: 2000px) {
 }
 
 @media (max-width: 1024px) {

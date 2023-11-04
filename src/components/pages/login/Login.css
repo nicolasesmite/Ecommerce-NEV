@@ -1,8 +1,3 @@
-body {
-  width: 100%;
-  height: 100%;
-}
-
 .container-login {
   background-color: rgb(0, 0, 0);
   color: black;
@@ -10,7 +5,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 80%;
   font-size: larger;
 }
 
@@ -25,7 +20,7 @@ body {
   margin-bottom: 100px;
 }
 
-form {
+.container-login > form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,32 +28,30 @@ form {
   width: 60%;
 }
 
-a:hover {
+.container-login-form > a:hover {
   color: black;
   background-color: white;
 }
 
-input {
+.container-inputs-login > input {
   height: 35px;
   border-radius: 0.4rem;
   padding-left: 5px;
   font-size: 20px;
+  color: black;
 }
 
 .h3-title-register {
   font-size: 20px;
   margin: 10px;
+  color: white;
 }
 
-button {
+.container-buttons-login > button {
   color: black;
   font-size: 15px;
   border-radius: 7px;
   height: 20px;
-}
-
-button:hover {
-  background-color: chartreuse;
 }
 
 .button-register-login {
@@ -83,6 +76,7 @@ button:hover {
 
 .login-img {
   width: 420px;
+  height: 400px;
 }
 
 @media (max-width: 1024px) {
@@ -114,12 +108,12 @@ button:hover {
     width: 250px;
   }
 
-  button {
+  .container-buttons-login > button {
     margin-bottom: 0;
     height: 30px;
   }
 
-  form {
+  .container-login > form {
     width: 100%;
   }
 }
@@ -127,11 +121,6 @@ button:hover {
 @media (max-width: 450px) {
   .h3-title-register {
     font-size: 15px;
-  }
-
-  a,
-  button {
-    pointer-events: none;
   }
 
   .container-buttons-login {

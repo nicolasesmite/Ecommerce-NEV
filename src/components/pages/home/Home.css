@@ -1,8 +1,4 @@
-* {
-  color: white;
-}
-
-h1 {
+.h1-home {
   font: bold;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-top: 15px;
@@ -22,6 +18,7 @@ h1 {
   justify-content: center;
   flex-wrap: wrap;
   background-color: rgb(17, 2, 2);
+  color: white;
 }
 
 .button-home {
@@ -34,6 +31,7 @@ h1 {
   height: 70px;
   margin-bottom: 100px;
   font-size: 30px;
+  color: white;
 }
 
 .button-home:hover {
@@ -41,27 +39,25 @@ h1 {
   color: black;
 }
 
-@media (max-width: 2000px) {
-  img {
-    width: 20vw;
-    height: 55vh;
-  }
+.gif-home {
+  width: 25vw;
+  height: 55vh;
 }
 
 @media (max-width: 1024px) {
-  img {
+  .gif-home {
     width: 35vw;
     height: 50vh;
   }
 }
 
 @media (max-width: 576px) {
-  img {
+  .gif-home {
     width: 75vw;
     height: 50vh;
   }
 
-  button {
+  .container-img-home > button {
     margin-bottom: 130px;
   }
 
