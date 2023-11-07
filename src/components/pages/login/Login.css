@@ -111,6 +111,7 @@
   .container-buttons-login > button {
     margin-bottom: 0;
     height: 30px;
+    background-color: rgb(63, 203, 140);
   }
 
   .container-login > form {
@@ -125,5 +126,9 @@
 
   .container-buttons-login {
     margin-bottom: 3px;
+  }
+
+  .container-buttons-login > button {
+    background-color: rgb(63, 203, 140);
   }
 }

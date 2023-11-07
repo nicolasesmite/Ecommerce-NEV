@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signUp, db } from "../../../../firebaseConfig";
 import { setDoc, doc } from "firebase/firestore";
+import "./Register.css";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -34,21 +35,21 @@ const Register = () => {
           <h3>Email</h3>
           <input
             name="email"
-            aria-label="Email"
+            placeholder="Ingresa tu email"
             type="email"
             onChange={handleChange}
           ></input>
           <h3>Contraseña</h3>
           <input
             name="password"
-            aria-label="contraseña"
+            placeholder="Contraseña"
             type="password"
             onChange={handleChange}
           ></input>
           <h3>Confirmar contraseña</h3>
           <input
             name="confirmPassword"
-            aria-label="confirmar contraseña"
+            placeholder="Repetir contraseña"
             type="password"
             onChange={handleChange}
           ></input>
