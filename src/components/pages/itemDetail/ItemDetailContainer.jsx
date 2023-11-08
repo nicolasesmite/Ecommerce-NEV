@@ -1,4 +1,5 @@
 import React from "react";
+import "./ItemDetail.css";
 
 const ItemDetailContainer = ({ data }) => {
   const { productDetail, counter, addOne, subOne, onAdd, quantity } = {
@@ -7,17 +8,19 @@ const ItemDetailContainer = ({ data }) => {
   return (
     <div className="container-ItemDetail">
       <h2>{productDetail.name}</h2>
-      <img src={`${productDetail.img}`} style={{ width: "50px" }} />
+      <img className="img-detail" src={`${productDetail.img}`} />
+      <div>{productDetail.detail}</div>
       <div className="container-buttons-ItemDetail">
-        <button type="button" onClick={addOne}>
-          +
+        <h3>{counter} Unidades seleccionadas</h3>
+        <button type="button" className="button-add" onClick={addOne}>
+          + Agregar
         </button>
-        <h3>{counter}</h3>
-        <button type="button" onClick={subOne}>
-          -
+
+        <button type="button" className="button-quit" onClick={subOne}>
+          - Quitar
         </button>
-        <button type="button" onClick={onAdd}>
-          Add to cart
+        <button type="button" className="button-cart" onClick={onAdd}>
+          Agregar al carrito
         </button>
       </div>
 

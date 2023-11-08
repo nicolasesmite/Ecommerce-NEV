@@ -9,9 +9,6 @@
   justify-content: center;
 }
 
-.container-register > h3 {
-}
-
 .container-inputs-register {
   display: flex;
   flex-direction: column;
@@ -36,4 +33,5 @@
 
 .container-buttons-register > button {
   height: 30px;
+  background-color: rgb(63, 203, 140);
 }
