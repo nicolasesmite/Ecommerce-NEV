@@ -15,7 +15,7 @@
   justify-content: center;
   align-items: center;
   width: 25vw;
-  min-height: 20vh;
+
   margin: 25px 10px;
   border-style: solid;
   border-color: white;
@@ -23,11 +23,11 @@
 
 .container-item-itemList > img {
   width: 100%;
-  min-height: 30%;
+  height: 355px;
 }
 
 .container-details {
-  width: 50%;
+  width: 60%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -44,10 +44,11 @@
 @media (max-width: 1024px) {
   .container-item-itemList {
     width: 30vw;
+    height: 516px;
   }
 
   .container-details {
-    width: 70%;
+    width: 90%;
   }
 }
 
@@ -57,22 +58,10 @@
     flex-direction: column;
   }
 
-  .item-title {
-    position: absolute;
-    margin-left: 165px;
-    margin-bottom: 110px;
-    font-size: 30px;
-  }
-
   .container-item-itemList {
     width: 90%;
-    height: 150px;
+    height: 200px;
     flex-wrap: nowrap;
-  }
-
-  .container-item-itemList > img {
-    width: 30%;
-    height: 100%;
   }
 
   .container-details {
@@ -81,13 +70,19 @@
     gap: 5px;
     margin-top: 50px;
   }
-}
 
-@media (max-width: 450px) {
   .item-title {
     position: absolute;
-    margin-left: 120px;
+    margin-left: 135px;
     margin-bottom: 110px;
     font-size: 20px;
   }
+
+  .container-item-itemList > img {
+    height: 200px;
+    width: 150px;
+  }
+}
+
+@media (max-width: 450px) {
 }
