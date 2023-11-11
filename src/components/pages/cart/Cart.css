@@ -4,6 +4,20 @@
   background-color: black;
   color: white;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+}
+
+.container-cart-2 > img {
+  width: 100px;
+  height: 100px;
+}
+.container-cart-2 {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.buttons-cart {
+  display: flex;
   flex-direction: column;
 }

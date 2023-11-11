@@ -32,6 +32,17 @@ const CartContextComponent = ({ children }) => {
     return product?.quantity;
   };
 
+  const deleteAnUnit = (id) => {
+    let product = cart.find((element) => element.id === id);
+
+    if (product.quantity > 1) {
+      product.quantity = product.quantity - 1;
+    } else {
+      let newArray = cart.filter((element) => element.id !== id);
+      localStorage.setItem("cart", JSON.stringify(newArray));
+      setCart(newArray);
+    }
+  };
   const clearCart = () => {
     localStorage.removeItem("cart");
     setCart([]);
@@ -58,6 +69,7 @@ const CartContextComponent = ({ children }) => {
     clearCart,
     deleteById,
     getTotalPrice,
+    deleteAnUnit,
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;

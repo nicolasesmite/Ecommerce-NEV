@@ -29,8 +29,9 @@
 .container-details {
   width: 60%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .link-detalles:hover {
@@ -82,7 +83,4 @@
     height: 200px;
     width: 150px;
   }
-}
-
-@media (max-width: 450px) {
 }
