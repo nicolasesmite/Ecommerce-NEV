@@ -18,14 +18,20 @@ export const Cart = ({ cart }) => {
 
   return (
     <div className="container-cart">
-      <h2 className="h2-cart-title">Mi Carrito</h2>
+      <h2 className="h2-cart-title">Bienvenido a tu carrito</h2>
 
       {cart.map((product) => {
         return (
           <div className="container-product-cart" key={product.id}>
-            <div className="container-cart-2">
+            <div className="h2-container">
               <h2>{product.name}</h2>
+            </div>
+
+            <div className="container-cart-2">
               <img src={`${product.img}`} />
+              <div className="quantity-container">
+                <h3>Cantidad de articulos {product.quantity}</h3>
+              </div>
 
               <div className="buttons-cart">
                 <button className="button-cart-add" onClick={addOne}>
@@ -46,20 +52,21 @@ export const Cart = ({ cart }) => {
                 >
                   Eliminar articulo
                 </button>
-                <h3>{counter}</h3>
               </div>
             </div>
           </div>
         );
       })}
-      <h2 className="h2-cart-finish">
-        {cart && getTotalPrice() && (
-          <Link to="/checkOut">Finalizar compra</Link>
-        )}
-      </h2>
-      <button className="button-cart-clean" onClick={clearCart}>
-        Limpiar Carrito
-      </button>
+      <div className="links-container">
+        <h2 className="h2-cart-finish">
+          {cart && getTotalPrice() && (
+            <Link to="/checkOut">Finalizar compra</Link>
+          )}
+        </h2>
+        <button className="button-cart-clean" onClick={clearCart}>
+          Limpiar Carrito
+        </button>
+      </div>
     </div>
   );
 };
