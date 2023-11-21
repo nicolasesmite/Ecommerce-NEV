@@ -1,24 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { Link } from "react-router-dom";
 import "./Cart.css";
 
 export const Cart = ({ cart }) => {
-  const {
-    deleteAnUnit,
-    addOne,
-    clearCart,
-    deleteById,
-    getTotalPrice,
-    getQuantityById,
-  } = useContext(CartContext);
-
-  const [counter, setCounter] = useState(null);
+  const { clearCart, deleteById, getTotalPrice } = useContext(CartContext);
 
   return (
     <div className="container-cart">
-      <h2 className="h2-cart-title">Bienvenido a tu carrito</h2>
+      <h1 className="h2-cart-title">Bienvenido a tu carrito</h1>
 
       {cart.map((product) => {
         return (
@@ -30,22 +21,14 @@ export const Cart = ({ cart }) => {
             <div className="container-cart-2">
               <img src={`${product.img}`} />
               <div className="quantity-container">
-                <h3>Cantidad de articulos {product.quantity}</h3>
+                {product.quantity > 1 ? (
+                  <h3>{product.quantity} unidades seleccionadas</h3>
+                ) : (
+                  <h3>{product.quantity}unidad seleccionada</h3>
+                )}
               </div>
 
               <div className="buttons-cart">
-                <button className="button-cart-add" onClick={addOne}>
-                  + Agregar
-                </button>
-                <button
-                  className="button-cart-delete"
-                  onClick={
-                    (() => deleteAnUnit(product.id),
-                    () => setCounter(product.quantity))
-                  }
-                >
-                  - Quitar
-                </button>
                 <button
                   className="button-cart-remove"
                   onClick={() => deleteById(product.id)}
@@ -57,16 +40,32 @@ export const Cart = ({ cart }) => {
           </div>
         );
       })}
-      <div className="links-container">
-        <h2 className="h2-cart-finish">
-          {cart && getTotalPrice() && (
-            <Link to="/checkOut">Finalizar compra</Link>
-          )}
-        </h2>
-        <button className="button-cart-clean" onClick={clearCart}>
-          Limpiar Carrito
-        </button>
-      </div>
+
+      {cart.length > 0 ? (
+        <div className="links-container">
+          <div className="links">
+            <h2 className="h2-cart-finish">
+              {cart && getTotalPrice() && (
+                <Link to="/checkOut">Finalizar compra</Link>
+              )}
+            </h2>
+            <h2 className="h2-seguir-comprando">
+              <Link to="/shop">Seguir comprando</Link>
+            </h2>
+          </div>
+
+          <button className="button-cart-clean" onClick={clearCart}>
+            Limpiar Carrito
+          </button>
+        </div>
+      ) : (
+        <div className="carrito-vacio-container">
+          <h2>Aún no agregó ningún articulo al carrito </h2>
+          <h2 className="h2-seguir-comprando">
+            <Link to="/shop">Seguir comprando</Link>
+          </h2>
+        </div>
+      )}
     </div>
   );
 };
