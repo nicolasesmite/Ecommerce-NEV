@@ -75,9 +75,9 @@ function Navbar(props) {
         <ListItem disablePadding>
           <ListItemButton onClick={handleLogout}>
             <ListItemIcon>
-              <LogoutIcon sx={{ color: "black" }} />
+              <LogoutIcon sx={{ color: "white" }} />
             </ListItemIcon>
-            <ListItemText primary={"Cerrar sesion"} sx={{ color: "black" }} />
+            <ListItemText primary={"Cerrar sesion"} sx={{ color: "white" }} />
           </ListItemButton>
         </ListItem>
       </List>

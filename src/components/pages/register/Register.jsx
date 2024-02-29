@@ -13,12 +13,32 @@ const Register = () => {
     confirmPassword: "",
   });
 
+  let noMatch = false;
+
   const handleChange = (e) => {
-    setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value });
+    if (e.target.name !== "confirmPassword") {
+      setUserCredentials({
+        ...userCredentials,
+        [e.target.name]: e.target.value,
+      });
+    } else {
+      if (userCredentials.password == e.target.value) {
+        setUserCredentials({
+          ...userCredentials,
+          [e.target.name]: e.target.value,
+        });
+      } else {
+        noMatch = true;
+      }
+    }
+    {
+      console.log(noMatch);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       let res = await signUp(userCredentials);
       if (res.user.uid) {

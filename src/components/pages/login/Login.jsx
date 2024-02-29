@@ -8,6 +8,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import "./Login.css";
 
 const Login = () => {
+  const NExist = true;
   const { handleLogIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ const Login = () => {
       const res = await onSignIn(userCredentials);
 
       if (res?.user) {
+        NExist = false;
         const userCollection = collection(db, "users");
         const userRef = doc(userCollection, res.user.uid);
         const userDoc = await getDoc(userRef);
@@ -74,12 +76,22 @@ const Login = () => {
               onChange={handleChange}
               placeholder="Ingrese su contraseña"
             ></input>
-            <div style={{ color: "black" }} hidden>
-              Datos no validos, favor chequee su email y contraseña
-            </div>
+
+            {NExist && (
+              <div
+                style={{
+                  color: "white",
+                  padding: "5px",
+                }}
+              >
+                Email y/o contraseña incorrectos
+              </div>
+            )}
           </div>
 
-          <Link to="/forgot-password">Olvide mi contraseña</Link>
+          <Link to="/forgot-password" style={{ color: "blue" }}>
+            Olvide mi contraseña
+          </Link>
 
           <div className="container-buttons-login">
             <button type="submit">Ingresar</button>
