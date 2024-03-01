@@ -13,39 +13,57 @@ const Register = () => {
     confirmPassword: "",
   });
 
-  let noMatch = false;
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    if (e.target.name !== "confirmPassword") {
-      setUserCredentials({
-        ...userCredentials,
-        [e.target.name]: e.target.value,
-      });
-    } else {
-      if (userCredentials.password == e.target.value) {
-        setUserCredentials({
-          ...userCredentials,
-          [e.target.name]: e.target.value,
-        });
-      } else {
-        noMatch = true;
-      }
-    }
-    {
-      console.log(noMatch);
-    }
+    setUserCredentials({
+      ...userCredentials,
+      [e.target.name]: e.target.value,
+    });
   };
 
+  const onValidate = (userCredentials) => {
+    let errors = {};
+    let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
+    let regexPassword = /^[A-Za-zÑñ#$%&*[0-9]+$/;
+
+    if (!userCredentials.email.trim()) {
+      errors.email = 'El campo "Email" no debe estar vacio.';
+    } else if (!regexEmail.test(userCredentials.email)) {
+      errors.email = 'El campo "Email" no esta en un formato correcto';
+    }
+
+    if (
+      !userCredentials.password.trim() ||
+      userCredentials.password.length < 8
+    ) {
+      errors.password =
+        'El campo "Password" debe incluir al menos 8 caracteres';
+    } else if (!regexPassword.test(userCredentials.password)) {
+      errors.password =
+        'El campo "Contraseña" solo admite letras mayusculas, minusculas y los siguientes caracteres especiales (#$%&*) .';
+    }
+
+    if (userCredentials.password !== userCredentials.confirmPassword) {
+      errors.confirmPassword = "Las contraseñas deben coincidir";
+    }
+
+    return errors;
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let err = onValidate(userCredentials);
+    setErrors(err);
 
-    try {
-      let res = await signUp(userCredentials);
-      if (res.user.uid) {
-        await setDoc(doc(db, "users", res.user.uid), { rol: "user" });
-      }
-      navigate("/login");
-    } catch (error) {}
+    if (Object.keys(err).length === 0) {
+      try {
+        let res = await signUp(userCredentials);
+        if (res.user.uid) {
+          await setDoc(doc(db, "users", res.user.uid), { rol: "user" });
+        }
+        navigate("/login");
+      } catch (error) {}
+    }
   };
 
   return (
@@ -59,6 +77,7 @@ const Register = () => {
             type="email"
             onChange={handleChange}
           ></input>
+          {errors.email && <div>{`${errors.email}`}</div>}
           <h3>Contraseña</h3>
           <input
             name="password"
@@ -66,6 +85,7 @@ const Register = () => {
             type="password"
             onChange={handleChange}
           ></input>
+          {errors.password && <div>{`${errors.password}`}</div>}
           <h3>Confirmar contraseña</h3>
           <input
             name="confirmPassword"
@@ -73,6 +93,7 @@ const Register = () => {
             type="password"
             onChange={handleChange}
           ></input>
+          {errors.confirmPassword && <div>{`${errors.confirmPassword}`}</div>}
         </div>
 
         <div className="container-buttons-register">
