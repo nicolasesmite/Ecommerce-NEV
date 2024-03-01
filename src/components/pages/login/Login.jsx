@@ -8,7 +8,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import "./Login.css";
 
 const Login = () => {
-  const NExist = true;
+  let nExist = true;
   const { handleLogIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Login = () => {
       const res = await onSignIn(userCredentials);
 
       if (res?.user) {
-        NExist = false;
+        nExist = false;
         const userCollection = collection(db, "users");
         const userRef = doc(userCollection, res.user.uid);
         const userDoc = await getDoc(userRef);
@@ -77,7 +77,7 @@ const Login = () => {
               placeholder="Ingrese su contraseña"
             ></input>
 
-            {NExist && (
+            {nExist && (
               <div
                 style={{
                   color: "white",
