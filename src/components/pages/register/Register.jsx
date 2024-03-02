@@ -62,7 +62,9 @@ const Register = () => {
           await setDoc(doc(db, "users", res.user.uid), { rol: "user" });
         }
         navigate("/login");
-      } catch (error) {}
+      } catch (error) {
+        alert("El email ya esta registrado");
+      }
     }
   };
 
