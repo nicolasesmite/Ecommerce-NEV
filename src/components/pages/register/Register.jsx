@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { signUp, db } from "../../../../firebaseConfig";
 import { setDoc, doc } from "firebase/firestore";
 import "./Register.css";
+import swal from "sweetalert2";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -63,7 +64,15 @@ const Register = () => {
         }
         navigate("/login");
       } catch (error) {
-        alert("El email ya esta registrado");
+        swal.fire({
+          title: "UPS!",
+          text: "El correo que estas intentando registrar ya se encuentra en nuestros usuarios!",
+          imageUrl:
+            "https://res.cloudinary.com/dxb4thu1x/image/upload/v1709493806/img_99352_mate3_k9kxy1.jpg",
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: "Custom image",
+        });
       }
     }
   };

@@ -1,0 +1,25 @@
+.container-orders {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.h3-noOrders-orders {
+  font-weight: 500;
+  font-size: 50px;
+}
+
+.container-orders > img {
+  width: 200px;
+  height: 200px;
+}
+
+.h2-seguir-comprando-orders:hover {
+  font-size: 30px;
+}

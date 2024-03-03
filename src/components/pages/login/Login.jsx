@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { loginGoogle, onSignIn } from "../../../../firebaseConfig";
-import { db } from "../../../../firebaseConfig";
+import { db, loginGoogle, onSignIn } from "../../../../firebaseConfig";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
@@ -49,6 +48,14 @@ const Login = () => {
   const googleSignIn = async () => {
     try {
       let res = await loginGoogle();
+
+      let finallyUser = {
+        email: res.user.email,
+        rol: "user",
+      };
+
+      handleLogIn(finallyUser);
+
       navigate("/");
     } catch (error) {}
   };

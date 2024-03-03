@@ -1,6 +1,7 @@
 import React from "react";
 import "./ItemDetail.css";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert2";
 
 const ItemDetailContainer = ({ data }) => {
   const { productDetail, counter, addOne, subOne, onAdd, quantity } = {

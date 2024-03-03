@@ -7,6 +7,7 @@ import { getDoc, collection, doc } from "firebase/firestore";
 import ItemDetailContainer from "./ItemDetailContainer";
 import { useContext } from "react";
 import { CartContext } from "../../../context/CartContext";
+import swal from "sweetalert2";
 
 const ItemDetail = () => {
   const { id } = useParams();
@@ -28,13 +29,29 @@ const ItemDetail = () => {
   const addOne = () => {
     counter < productDetail.stock
       ? setCounter(counter + 1)
-      : alert("Agregaste todos los disponibles");
+      : swal.fire({
+          title: "Si que te gusta el Mate!",
+          text: "Has seleccionado todas nuestras unidades disponibles",
+          imageUrl:
+            "https://res.cloudinary.com/dxb4thu1x/image/upload/v1709494882/D5Z6q0KXoAAzoE-_1_cdzcqy.jpg",
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: "Custom image",
+        });
   };
 
   const subOne = () => {
     counter > 1
       ? setCounter(counter - 1)
-      : alert("no se puede agregar menos de 1 al carrito");
+      : swal.fire({
+          title: "No hay mate sin mate y bombilla",
+          text: "No puedes agregar menos de un articulo al carrito",
+          imageUrl:
+            "https://res.cloudinary.com/dxb4thu1x/image/upload/v1709494881/D5Z6q0KXoAAzoE-_i7sxrt.jpg",
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: "Custom image",
+        });
   };
 
   const onAdd = () => {

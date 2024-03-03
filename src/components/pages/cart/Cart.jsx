@@ -36,6 +36,12 @@ export const Cart = ({ cart }) => {
                   Eliminar articulo
                 </button>
               </div>
+
+              <div>
+                {product.quantity > 0 && (
+                  <h3>${product.quantity * product.unit_price}</h3>
+                )}
+              </div>
             </div>
           </div>
         );
@@ -44,6 +50,7 @@ export const Cart = ({ cart }) => {
       {cart.length > 0 ? (
         <div className="links-container">
           <div className="links">
+            {cart && <h3>Total de la compra ${getTotalPrice()}</h3>}
             <h2 className="h2-cart-finish">
               {cart && getTotalPrice() && (
                 <Link to="/checkOut">Finalizar compra</Link>

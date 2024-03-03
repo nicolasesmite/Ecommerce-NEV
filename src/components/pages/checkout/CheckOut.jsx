@@ -15,6 +15,7 @@ import {
   doc,
   serverTimestamp,
 } from "firebase/firestore";
+import "./Checkout.css";
 
 const CheckOut = () => {
   const { cart, getTotalPrice, clearCart } = useContext(CartContext);
@@ -110,6 +111,7 @@ const CheckOut = () => {
     <div className="container-checkout">
       {!orderId ? (
         <div className="container-checkout-data">
+          <h2>Finalizar compra</h2>
           <input
             name="codigo-Postal"
             aria-label="codigo-postal"

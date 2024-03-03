@@ -39,6 +39,7 @@ let googleProvider = new GoogleAuthProvider();
 
 export const loginGoogle = async () => {
   const res = await signInWithPopup(auth, googleProvider);
+  return res;
 };
 
 export const logOut = () => {
