@@ -3,7 +3,7 @@ import {
   signInWithEmailAndPassword,
   getAuth,
   signOut,
-  signInWithPopup,
+  signInWithRedirect,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
@@ -21,7 +21,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 export const db = getFirestore(app);
 
 //Using firebase services
@@ -38,8 +38,7 @@ export const onSignIn = async ({ email, password }) => {
 let googleProvider = new GoogleAuthProvider();
 
 export const loginGoogle = async () => {
-  const res = await signInWithPopup(auth, googleProvider);
-  return res;
+  signInWithRedirect(auth, googleProvider);
 };
 
 export const logOut = () => {

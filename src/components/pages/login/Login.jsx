@@ -1,12 +1,28 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { db, loginGoogle, onSignIn } from "../../../../firebaseConfig";
+import { db, loginGoogle, onSignIn, auth } from "../../../../firebaseConfig";
 import { collection, doc, getDoc } from "firebase/firestore";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import "./Login.css";
+import { getRedirectResult } from "firebase/auth";
 
 const Login = () => {
+  useEffect(() => {
+    async function startFetching() {
+      const res = await getRedirectResult(auth);
+      if (res) {
+        let finallyUser = {
+          email: res.user.email,
+          rol: "user",
+        };
+
+        handleLogIn(finallyUser);
+      }
+    }
+
+    startFetching();
+  }, []);
   let nExist = true;
   const { handleLogIn } = useContext(AuthContext);
 
@@ -42,21 +58,6 @@ const Login = () => {
 
         navigate("/");
       }
-    } catch (error) {}
-  };
-
-  const googleSignIn = async () => {
-    try {
-      let res = await loginGoogle();
-
-      let finallyUser = {
-        email: res.user.email,
-        rol: "user",
-      };
-
-      handleLogIn(finallyUser);
-
-      navigate("/");
     } catch (error) {}
   };
 
@@ -102,7 +103,7 @@ const Login = () => {
 
           <div className="container-buttons-login">
             <button type="submit">Ingresar</button>
-            <button onClick={googleSignIn} type="button">
+            <button onClick={() => loginGoogle()} type="button">
               Ingresa con google
             </button>
           </div>

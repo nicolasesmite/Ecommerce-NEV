@@ -1,10 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { createContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 const AuthContextComponent = ({ children }) => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("userInfo")) || {}
   );
@@ -17,6 +19,7 @@ const AuthContextComponent = ({ children }) => {
     setIsLogged(true);
     localStorage.setItem("userInfo", JSON.stringify(userLogged));
     localStorage.setItem("isLogged", JSON.stringify(true));
+    navigate("/");
   };
 
   const logOutContext = () => {
