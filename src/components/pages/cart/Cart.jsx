@@ -24,7 +24,7 @@ export const Cart = ({ cart }) => {
                 {product.quantity > 1 ? (
                   <h3>{product.quantity} unidades seleccionadas</h3>
                 ) : (
-                  <h3>{product.quantity}unidad seleccionada</h3>
+                  <h3>{product.quantity} unidad seleccionada</h3>
                 )}
               </div>
 

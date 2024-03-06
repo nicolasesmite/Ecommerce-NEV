@@ -1,7 +1,6 @@
 import React from "react";
 import "./ItemDetail.css";
 import { useNavigate } from "react-router-dom";
-import swal from "sweetalert2";
 
 const ItemDetailContainer = ({ data }) => {
   const { productDetail, counter, addOne, subOne, onAdd, quantity } = {
@@ -14,7 +13,9 @@ const ItemDetailContainer = ({ data }) => {
     <div className="container-ItemDetail">
       <h2>{productDetail.name}</h2>
       <img className="img-detail" src={`${productDetail.img}`} />
-      <div>{productDetail.detail}</div>
+      <div className="container-ItemDetail-productDetail">
+        {productDetail.detail}
+      </div>
       <div className="container-buttons-ItemDetail">
         <h3>{counter} Unidades seleccionadas</h3>
         <button type="button" className="button-add" onClick={addOne}>
