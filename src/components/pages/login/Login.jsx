@@ -23,7 +23,7 @@ const Login = () => {
 
     startFetching();
   }, []);
-  let nExist = true;
+
   const { handleLogIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -37,14 +37,19 @@ const Login = () => {
     setUserCredentials({ ...userCredentials, [e.target.name]: e.target.value });
   };
 
+  const [credentialsCorrect, setCredentialsCorrect] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const res = await onSignIn(userCredentials);
 
+      if (res == undefined) {
+        setCredentialsCorrect(true);
+      }
+
       if (res?.user) {
-        nExist = false;
         const userCollection = collection(db, "users");
         const userRef = doc(userCollection, res.user.uid);
         const userDoc = await getDoc(userRef);
@@ -84,18 +89,8 @@ const Login = () => {
               onChange={handleChange}
               placeholder="Ingrese su contraseña"
             ></input>
-
-            {nExist && (
-              <div
-                style={{
-                  color: "white",
-                  padding: "5px",
-                }}
-              >
-                Email y/o contraseña incorrectos
-              </div>
-            )}
           </div>
+          {credentialsCorrect && <div>Usuario y/o contraseña incorrecta</div>}
 
           <Link to="/forgot-password" style={{ color: "blue" }}>
             Olvide mi contraseña

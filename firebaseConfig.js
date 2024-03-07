@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { initializeApp } from "firebase/app";
 import {
   signInWithEmailAndPassword,
@@ -29,10 +30,9 @@ export const db = getFirestore(app);
 export const onSignIn = async ({ email, password }) => {
   try {
     let res = await signInWithEmailAndPassword(auth, email, password);
+
     return res;
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 let googleProvider = new GoogleAuthProvider();
@@ -48,10 +48,9 @@ export const logOut = () => {
 export const signUp = async ({ email, password }) => {
   try {
     let res = await createUserWithEmailAndPassword(auth, email, password);
+
     return res;
-  } catch (error) {
-    console.log(res);
-  }
+  } catch (error) {}
 };
 
 export const forgotPassword = async (email) => {
