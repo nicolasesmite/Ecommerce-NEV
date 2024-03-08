@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { initializeApp } from "firebase/app";
 import {
   signInWithEmailAndPassword,
@@ -9,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
 } from "firebase/auth";
+
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -38,7 +38,7 @@ export const onSignIn = async ({ email, password }) => {
 let googleProvider = new GoogleAuthProvider();
 
 export const loginGoogle = async () => {
-  signInWithRedirect(auth, googleProvider);
+  await signInWithRedirect(auth, googleProvider);
 };
 
 export const logOut = () => {
