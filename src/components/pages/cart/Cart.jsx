@@ -22,26 +22,24 @@ export const Cart = ({ cart }) => {
               <img src={`${product.img}`} />
               <div className="quantity-container">
                 {product.quantity > 1 ? (
-                  <h3>{product.quantity} unidades seleccionadas</h3>
+                  <h3>{product.quantity} unidades</h3>
                 ) : (
-                  <h3>{product.quantity} unidad seleccionada</h3>
+                  <h3>{product.quantity} unidad</h3>
                 )}
               </div>
-
-              <div className="buttons-cart">
-                <button
-                  className="button-cart-remove"
-                  onClick={() => deleteById(product.id)}
-                >
-                  Eliminar articulo
-                </button>
-              </div>
-
-              <div>
+            </div>
+            <div className="buttons-cart">
+              <div className="subTotal-container">
                 {product.quantity > 0 && (
-                  <h3>${product.quantity * product.unit_price}</h3>
+                  <h3>Subtotal ${product.quantity * product.unit_price}</h3>
                 )}
               </div>
+              <button
+                className="button-cart-remove"
+                onClick={() => deleteById(product.id)}
+              >
+                Eliminar articulo
+              </button>
             </div>
           </div>
         );

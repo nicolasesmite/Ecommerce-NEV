@@ -18,6 +18,7 @@ const Login = () => {
         };
 
         handleLogIn(finallyUser);
+        navigate("/");
       }
     }
 

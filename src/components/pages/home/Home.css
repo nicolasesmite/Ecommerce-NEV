@@ -12,8 +12,8 @@
 }
 
 .container-home {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -40,21 +40,14 @@
 }
 
 .gif-home {
-  width: 25vw;
-  height: 55vh;
+  width: 350px;
+  height: 400px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 400px) {
   .gif-home {
-    width: 35vw;
-    height: 50vh;
-  }
-}
-
-@media (max-width: 576px) {
-  .gif-home {
-    width: 75vw;
-    height: 50vh;
+    width: 300px;
+    height: 350px;
   }
 
   .container-img-home > button {
@@ -62,7 +55,7 @@
   }
 
   .h1-home {
-    font-size: 0;
-    visibility: hidden;
+    font-size: 30px;
+    text-align: center;
   }
 }
