@@ -66,6 +66,7 @@ export const Cart = ({ cart }) => {
       ) : (
         <div className="carrito-vacio-container">
           <h2>Aún no agregó ningún articulo al carrito </h2>
+          <img src="https://res.cloudinary.com/dxb4thu1x/image/upload/v1697911872/image_tjacsx.png" />
           <h2 className="h2-seguir-comprando">
             <Link to="/shop">Seguir comprando</Link>
           </h2>

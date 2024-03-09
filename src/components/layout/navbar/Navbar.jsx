@@ -48,7 +48,7 @@ function Navbar(props) {
           return (
             <Link key={id} to={path}>
               <ListItem disablePadding>
-                <ListItemButton sx={{}}>
+                <ListItemButton>
                   <ListItemIcon>
                     <Icon sx={{ color: "whitesmoke" }} />
                   </ListItemIcon>
@@ -120,7 +120,6 @@ function Navbar(props) {
             aria-label="open drawer"
             edge="end"
             onClick={handleDrawerToggle}
-            sx={{ mr: 2 }}
           >
             <MenuIcon color="black" />
           </IconButton>
@@ -153,7 +152,6 @@ function Navbar(props) {
         sx={{
           flexGrow: 1,
           py: 4,
-          width: "100%",
           minHeight: "100vh",
           padding: "0",
         }}

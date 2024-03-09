@@ -54,7 +54,7 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 430px) {
   .container-itemList {
     width: 100%;
     flex-direction: column;

@@ -30,11 +30,11 @@ const CheckOut = () => {
     cp: "",
     tel: "",
   });
+  const [orderId, setOrderId] = useState(null);
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const paramValue = queryParams.get("status");
-  const [orderId, setOrderId] = useState(null);
 
   useEffect(() => {
     let order = JSON.parse(localStorage.getItem("order"));
@@ -132,6 +132,7 @@ const CheckOut = () => {
         <div className="container-checkout-orderDetail">
           <h2>El pago se realizo con exito</h2>
           <h2>Su numero de compra es {orderId}</h2>
+
           <Link to="/shop">Seguir comprando</Link>
         </div>
       )}
