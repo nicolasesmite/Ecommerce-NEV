@@ -44,7 +44,7 @@ const ItemDetail = () => {
     counter > 1
       ? setCounter(counter - 1)
       : swal.fire({
-          title: "No hay mate sin mate y bombilla",
+          title: "Sin mate y bombilla, no podras tomar mate ",
           text: "No puedes agregar menos de un articulo al carrito",
           imageUrl:
             "https://res.cloudinary.com/dxb4thu1x/image/upload/v1709494881/D5Z6q0KXoAAzoE-_i7sxrt.jpg",

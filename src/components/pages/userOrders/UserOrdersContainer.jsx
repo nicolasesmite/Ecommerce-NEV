@@ -4,11 +4,11 @@ import "./UserOrders.css";
 const UserOrdersContainer = ({ myOrder }) => {
   return (
     <div className="container-orders">
+      <h2 className="h2-title-orders">Mis ordenes</h2>
       {myOrder.length > 0 ? (
         myOrder.map((order) => {
           return (
             <div key={order.id}>
-              <h2 className="h2-title-orders">Mis ordenes</h2>
               <div className="container-order-orders">
                 <h2 className="h2-id-orders">Numero de retiro {order.id}</h2>
                 <h2 className="h2-total-orders">

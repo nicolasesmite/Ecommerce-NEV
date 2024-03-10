@@ -63,12 +63,21 @@ const Register = () => {
           await setDoc(doc(db, "users", res.user.uid), { rol: "user" });
         }
         navigate("/login");
+        swal.fire({
+          title: "Es hora de matear el tiempo",
+          text: "Ingresa con tus datos ya registrados y disfruta de nuestros productos",
+          imageUrl:
+            "https://res.cloudinary.com/dxb4thu1x/image/upload/v1709493806/img_99352_mate3_k9kxy1.jpg",
+          imageWidth: 400,
+          imageHeight: 200,
+          imageAlt: "Custom image",
+        });
       } catch (error) {
         swal.fire({
           title: "UPS!",
           text: "El correo que estas intentando registrar ya se encuentra en nuestros usuarios!",
           imageUrl:
-            "https://res.cloudinary.com/dxb4thu1x/image/upload/v1709493806/img_99352_mate3_k9kxy1.jpg",
+            "https://res.cloudinary.com/dxb4thu1x/image/upload/v1697550232/tiposdebombilla_lugntl.jpg",
           imageWidth: 400,
           imageHeight: 200,
           imageAlt: "Custom image",
