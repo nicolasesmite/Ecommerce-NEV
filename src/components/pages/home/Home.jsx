@@ -11,7 +11,7 @@ const Home = () => {
       <div className="container-img-home">
         <img
           className="gif-home"
-          src="https://res.cloudinary.com/dxb4thu1x/image/upload/v1709494881/D5Z6q0KXoAAzoE-_i7sxrt.jpg"
+          src="https://res.cloudinary.com/dxb4thu1x/image/upload/v1697911872/image_tjacsx.png"
         />
       </div>
       <button

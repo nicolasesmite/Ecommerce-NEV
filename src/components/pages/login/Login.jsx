@@ -99,7 +99,11 @@ const Login = () => {
 
           <div className="container-buttons-login">
             <button type="submit">Ingresar</button>
-            <button onClick={() => loginGoogle()} type="button">
+            <button
+              onClick={() => loginGoogle()}
+              type="button"
+              className="buttonGoogle"
+            >
               Ingresa con google
             </button>
           </div>

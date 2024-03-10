@@ -56,5 +56,6 @@
   .h1-home {
     font-size: 30px;
     text-align: center;
+    width: 90%;
   }
 }

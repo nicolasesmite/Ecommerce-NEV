@@ -12,16 +12,26 @@
 .container-checkout-data {
   display: flex;
   flex-direction: column;
-  width: 30%;
-  gap: 5px;
+  align-items: center;
+  width: 70%;
+  gap: 10px;
 }
 
 .container-checkout-data > input {
   height: 25px;
   padding-left: 5px;
+  width: 300px;
 }
 
 .container-checkout-data > button {
-  height: 20px;
+  height: 35px;
   margin-top: 15px;
+  color: black;
+  width: 200px;
+}
+
+.container-checkout-data > h2 {
+  text-align: center;
+  padding-bottom: 50px;
+  width: 100%;
 }

@@ -102,9 +102,13 @@
   .container-login > form {
     width: 100%;
   }
+
+  .buttonGoogle {
+    display: none;
+  }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   .h3-title-register {
     font-size: 15px;
   }
