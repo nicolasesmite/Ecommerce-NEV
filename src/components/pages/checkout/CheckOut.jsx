@@ -69,7 +69,7 @@ const CheckOut = () => {
         }
       );
 
-      order.forEach((element) => {
+      order.items.forEach((element) => {
         updateDoc(doc(db, "products", element.id), {
           stock: element.stock - element.quantity,
         });
