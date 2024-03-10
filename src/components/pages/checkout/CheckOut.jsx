@@ -36,6 +36,28 @@ const CheckOut = () => {
   const queryParams = new URLSearchParams(location.search);
   const paramValue = queryParams.get("status");
 
+  const handleBuy = async () => {
+    let order = {
+      cp: userData.cp,
+      tel: userData.tel,
+      items: cart,
+      totalPrice: total,
+      email: user.email,
+    };
+    localStorage.setItem("order", JSON.stringify(order));
+    const id = await createPreference();
+
+    console.log(order.totalPrice);
+
+    if (id) {
+      setPreferenceId(id);
+    }
+  };
+
+  const handleChange = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
+
   useEffect(() => {
     let order = JSON.parse(localStorage.getItem("order"));
 
@@ -83,28 +105,6 @@ const CheckOut = () => {
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const handleBuy = async () => {
-    let order = {
-      cp: userData.cp,
-      tel: userData.tel,
-      items: cart,
-      totalPrice: total,
-      email: user.email,
-    };
-    localStorage.setItem("order", JSON.stringify(order));
-    const id = await createPreference();
-
-    console.log(order.totalPrice);
-
-    if (id) {
-      setPreferenceId(id);
-    }
-  };
-
-  const handleChange = (e) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
   return (

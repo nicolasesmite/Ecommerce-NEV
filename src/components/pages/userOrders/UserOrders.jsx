@@ -12,7 +12,7 @@ const UserOrders = () => {
     const orderCollectios = collection(db, "orders");
     let ordersFiltered = query(
       orderCollectios,
-      where("buyer.email", "==", user.email)
+      where("email", "==", user.email)
     );
     getDocs(ordersFiltered)
       .then((res) => {
