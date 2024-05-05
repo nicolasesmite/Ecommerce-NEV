@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { db, loginGoogle, onSignIn, auth } from "../../../../firebaseConfig";
+import { db, onSignIn, auth } from "../../../../firebaseConfig";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../../context/AuthContext";
@@ -99,13 +99,6 @@ const Login = () => {
 
           <div className="container-buttons-login">
             <button type="submit">Ingresar</button>
-            <button
-              onClick={() => loginGoogle()}
-              type="button"
-              className="buttonGoogle"
-            >
-              Ingresa con google
-            </button>
           </div>
 
           <h3 className="h3-title-register">¿Aun no tienes cuenta?</h3>

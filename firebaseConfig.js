@@ -4,7 +4,6 @@ import {
   getAuth,
   signOut,
   signInWithRedirect,
-  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   sendPasswordResetEmail,
 } from "firebase/auth";
@@ -33,12 +32,6 @@ export const onSignIn = async ({ email, password }) => {
 
     return res;
   } catch (error) {}
-};
-
-let googleProvider = new GoogleAuthProvider();
-
-export const loginGoogle = async () => {
-  await signInWithRedirect(auth, googleProvider);
 };
 
 export const logOut = () => {
